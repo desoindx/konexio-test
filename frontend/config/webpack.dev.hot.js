@@ -40,11 +40,7 @@ module.exports = {
     ].concat(baseConfig.module.rules),
   },
   plugins: baseConfig.plugins.concat([
-    new webpack.DefinePlugin({
-      __API__: '"http://localhost:8080/v1"',
-      __GRAFANA_URL__: '"https://grafana.epicse.fr/d/epicse_back/epicse-back-statistics?orgId=1&refresh=10s&var-application=localhost&var-instance=localhost:8080"',
-      __STATIC_URL__: '"https://feature-278.static.epicse.fr/"',
-    }),
+    new webpack.DefinePlugin({ __API__: '"http://localhost:8443"' }),
     new webpack.HotModuleReplacementPlugin(),
   ]),
 };
