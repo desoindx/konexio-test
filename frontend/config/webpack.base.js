@@ -70,6 +70,11 @@ const getConfig = () => ({
       filename: path.resolve(rootPath, 'dist/index.html'),
       template: path.resolve(rootPath, 'index.html'),
     }),
+    new CopyPlugin({
+      patterns: [
+        'assets',
+      ],
+    }),
   ],
 });
 

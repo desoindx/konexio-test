@@ -10,6 +10,8 @@ const client = axios.create({
 
 const responseData = res => res.data;
 
-const Register = { helloWorld: () => client.get('/helloworld').then(responseData) };
+const register = values => client.post('/register', values).then(responseData);
+const saveUser = (id, user) => client.put(`/user/${id}`, user).then(responseData);
+const getUser = () => client.get('/users').then(responseData);
 
-export default { Register };
+export default { register, getUser, saveUser };
