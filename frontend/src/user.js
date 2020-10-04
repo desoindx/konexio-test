@@ -52,10 +52,10 @@ class User extends React.Component {
     return (
       <Container className="page">
         <Row className={styles.title}>
-          <Col xs={4}>
+          <Col>
             First Name
           </Col>
-          <Col xs={4}>
+          <Col>
             Last Name
           </Col>
           <Col />
@@ -64,33 +64,33 @@ class User extends React.Component {
           <Row key={user.id} className={styles.user}>
             {id === user.id ? (
               <>
-                <Col xs={4}>
+                <Col>
                   <FormControl
                     placeholder="First name..."
                     value={user.firstName}
                     onChange={value => this.onChange('firstName', value)}
                   />
                 </Col>
-                <Col xs={4}>
+                <Col>
                   <FormControl
                     placeholder="Last name..."
                     value={user.lastName}
                     onChange={value => this.onChange('lastName', value)}
                   />
                 </Col>
-                <Col>
+                <Col className={styles.userButton}>
                   <Button onClick={() => this.saveUser()}>Save modification</Button>
                 </Col>
               </>
             ) : (
               <>
-                <Col xs={4}>
+                <Col>
                   {user.firstName}
                 </Col>
-                <Col xs={4}>
+                <Col>
                   {user.lastName}
                 </Col>
-                <Col>
+                <Col className={styles.userButton}>
                   <Button onClick={() => this.modifyUser(user.id)}>Modify</Button>
                 </Col>
               </>
