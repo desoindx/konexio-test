@@ -1,4 +1,5 @@
 import http from 'http';
+import path from 'path';
 import express from 'express';
 import bodyParser from 'body-parser';
 import { Validator } from 'node-input-validator';
@@ -9,6 +10,7 @@ import {
 } from './user';
 
 const app = express();
+var port = process.env.PORT || 8443;
 
 app.use(bodyParser.json({ limit: '25mb' }));
 
@@ -24,9 +26,11 @@ app.options('*', (req, res) => {
   res.send();
 });
 
+app.use(express.static(path.join(__dirname, '../build')));
+
 const httpsServer = http.createServer(app);
-httpsServer.listen(8443, () => {
-  console.log('Listening on port 8443!');
+httpsServer.listen(port, () => {
+  console.log(`Listening on port ${port}!`);
 });
 
 app.post('/register', (req, res) => {
@@ -57,4 +61,9 @@ app.put('/user/:id', (req, res) => {
 
 app.get('/users', (req, res) => {
   res.json({ users: getUsers() });
+});
+
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });

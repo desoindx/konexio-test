@@ -53,7 +53,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "scripts": {
-    "build": "node scripts/build.js",
+    "build": "webpack --mode production --config config/webpack.prod.js",
     "lint": "node_modules\\.bin\\eslint --ext \".js\" --quiet .",
     "lint:fix": "node_modules\\.bin\\eslint --ext \".js\" --quiet --fix .",
     "start": "webpack-dev-server --config config/webpack.dev.hot.js --open"
